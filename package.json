@@ -1,12 +1,14 @@
 {
   "name": "vite-template-solid",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "homepage": "https://github.com/KyleFontenot/Sticker-Solidjs.git",
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
+    "publish": "NODE_ENV=production yarn version && vite build ",
+    "postpublish": "git add --all && git commit && git push",
     "serve": "vite preview",
     "deploy": "gh-pages -d dist"
   },
@@ -18,11 +20,9 @@
     "vite-plugin-solid-svg": "^0.1.2"
   },
   "dependencies": {
-    "chart.js": "^3.6.0",
     "sass": "^1.43.4",
     "solid-app-router": "^0.1.11",
     "solid-chart.js": "^1.0.7",
-    "solid-js": "^1.2.2",
-    "statistics.js": "^1.0.0"
+    "solid-js": "^1.2.2"
   }
 }
