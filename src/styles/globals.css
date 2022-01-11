@@ -139,14 +139,11 @@ html {
   box-sizing: inherit;
 }
 
-/* NextJS default globals */
-
 html,
 body {
   padding: 0;
   margin: 0;
-  /* added in Overpass, relying on Next's Head comopnent in the index.js file */
-  font-family: "Rubik", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+  font-family: "Quicksand", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: #666;
   line-height: 1.4;
@@ -164,7 +161,4 @@ a {
 button,
 input[type="submit"] {
   letter-spacing: 1px;
-}
-.helpicon {
-  margin-top: 0.5rem;
 }
