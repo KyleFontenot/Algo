@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="xMidYMid meet" version="1.1" viewBox="0 0 332.25 266.69" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="toprightgradient">
+      <stop offset="0%" stop-color="#9156ad" />
+      <stop offset="100%" stop-color="#ffca91" />
+    </linearGradient>
+  </defs>
+ <g transform="translate(64.391 -10.572)">
+  <g transform="matrix(1 0 0 1 -635.52 1.2487)">
+   <path fill="url(#toprightgradient)" d="m571.13 9.3235v121.89c-8e-5 19.488 15.854 35.342 35.342 35.342 18.308-2.1e-4 33.409-13.994 35.169-31.848h0.17259v-3.2541c-8e-5 -16.628 13.421-30.051 30.049-30.051 16.628-6e-5 30.05 13.423 30.05 30.051v109.22c-8e-5 19.488 15.854 35.342 35.342 35.342 19.487-2.4e-4 35.342-15.854 35.342-35.342v-65.328c-8e-5 -16.628 13.423-30.049 30.051-30.049 16.628-7e-5 30.049 13.421 30.049 30.049v3.2541h0.013c0.49874 19.056 16.155 34.404 35.329 34.404 19.487-2.2e-4 35.342-15.855 35.342-35.342v-168.33z" style="-inkscape-stroke:none;color:#000000;fill-rule:evenodd;"/>
+  </g>
+ </g>
+</svg>
