@@ -2,6 +2,8 @@ import styles from "../styles/Home.module.scss";
 import { createSignal } from "solid-js";
 import EntryForm from "../components/EntryForm/EntryForm.jsx";
 
+import DnD from "../components/DnD";
+
 import TopLeftSVG from "../images/topleft-shapes.svg";
 
 import BottomSVG from "../images/bottom-shapes.svg";
@@ -10,7 +12,6 @@ import TopRightSVG from "../images/topright-shapes.svg";
 
 const Home = () => {
   const [scrolloffset, setoffset] = createSignal();
-  createEffect(() => {});
   return (
     <main>
       <section className={styles.landingspace}>
@@ -41,7 +42,6 @@ const Home = () => {
       <div className={styles.scrolltimeline}>
         <div className={styles.timelineline}></div>
       </div>
-
       <section
         className={styles.letsgetstarted}
         style="vertical-align: middle;text-align:center;"
@@ -50,6 +50,14 @@ const Home = () => {
           Let's get started
         </h1>
         <EntryForm />
+
+        <DnD style="margin: 2rem; background-color: #444">
+          <p>Hello</p>
+        </DnD>
+        <DnD style="margin: 2rem; background-color: #444">
+          <p>Hello</p>
+          <p>second</p>
+        </DnD>
       </section>
     </main>
   );

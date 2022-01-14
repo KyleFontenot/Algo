@@ -1,0 +1,7 @@
+.DnD-container {
+  min-height: 10rem;
+  display: block;
+}
+.DnD__childDiv {
+  background-color: white;
+}

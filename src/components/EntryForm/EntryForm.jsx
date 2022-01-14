@@ -48,9 +48,7 @@ const Home = (props) => {
       </div>
 
       <div className={styles.inputDiv}>
-        <label for="userSpecialChar">
-          Choose one or two special characters.
-        </label>
+        <label for="userSpecialChar">Choose special characters.</label>
         <br />
         <span className={styles.example}>Example: "boisterous"</span>
         <br />
@@ -60,25 +58,30 @@ const Home = (props) => {
           name="userSpecialChar"
           maxLength="6"
           minLength="2"
-          ref={wordRef}
+          ref={specialRef}
           onInput={() => {
-            setUserWord(wordRef.value);
+            setUserSpecial(specialRef.value);
           }}
           style={{
             width:
-              userWord().length > 0 ? `${userWord().length + 3}rem` : "60%",
+              userSpecial().length > 0
+                ? `${userSpecial().length + 3}rem`
+                : "60%",
           }}
         />
       </div>
       <div className={styles.contextinfo}>
         <p>
-          Here's a description. THis is atop that is is super fun and helpful
+          Try avoiding using " ! " since it is the most common character used in
+          passwords, making it easier to crack. If you can't imagine not using
+          it, it'll be okay to use.
         </p>
       </div>
 
       <div className={styles.inputDiv}>
         <label for="userphrase">
-          Choose a short word that you'll definitely remember.
+          Choose a short word that you'll definitely remember. <br />( 7 letters
+          maximum )
         </label>
         <br />
         <span className={styles.example}>Example: "boisterous"</span>
@@ -87,35 +90,7 @@ const Home = (props) => {
           type="text"
           id="userphrase"
           name="userphrase"
-          maxLength="6"
-          minLength="2"
-          ref={wordRef}
-          onInput={() => {
-            setUserWord(wordRef.value);
-          }}
-          style={{
-            width:
-              userWord().length > 0 ? `${userWord().length + 3}rem` : "60%",
-          }}
-        />
-      </div>
-      <div className={styles.contextinfo}>
-        <p>
-          Here's a description. THis is atop that is is super fun and helpful
-        </p>
-      </div>
-      <div className={styles.inputDiv}>
-        <label for="userphrase">
-          Choose a short word that you'll definitely remember.
-        </label>
-        <br />
-        <span className={styles.example}>Example: "boisterous"</span>
-        <br />
-        <input
-          type="text"
-          id="userphrase"
-          name="userphrase"
-          maxLength="6"
+          maxLength="7"
           minLength="2"
           ref={wordRef}
           onInput={() => {
