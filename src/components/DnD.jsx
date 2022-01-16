@@ -1,34 +1,59 @@
-import "./DnD.css";
-import { For, children } from "solid-js";
-import { Dynamic } from "solid-js/web";
+import { For, children, createSignal, createEffect, onMount } from "solid-js";
+import { createStore } from "solid-js/store";
+import { usePassStore } from "./ContextProvider";
 
-export default function DnD(props) {
+import Sortable from "sortablejs";
+import styles from "./DnD.module.scss";
+// export let sortableRef;
+export function DnD(props) {
   const kids = children(() => props.children);
-  console.log(props.children);
+  let sortableRef;
+  const [master, setMaster] = usePassStore();
+  onMount(() => {
+    setMaster(sortableRef.innerText);
+  });
 
-  // if (!props.children.length) {
-  //   console.error("DnD Component must have more than one child element");
-  // }
+  // At the moment requires multiple children
   if (props.children instanceof HTMLElement) {
-    console.log("htmleleement!!!");
+    const singleChild = props.children;
     return <>{props.children}</>;
   } else {
-    return (
-      <div className="DnD-container" style={props.style}>
-        <For each={kids()} fallback={<p>hello</p>}>
+    // for (let i = 0; i < kids().length; i++) {
+    //   setMaster((master) => ({ [`pos${i}`]: `value${i}` }));
+    // }
+    // console.log(master);
+    const full = (
+      <div ref={sortableRef} style={props.style}>
+        <For each={kids()}>
           {(child) => {
-            return (
-              <div
-                draggable="true"
-                className="DnD__childDiv"
-                style={props.childrenStyle}
-              >
-                {child}
-              </div>
-            );
+            return child;
           }}
         </For>
       </div>
     );
+
+    // console.log(sortableRef.innerText);
+    // Object.values(kids()).forEach((each) => {
+    //   each.setAttribute("draggable", "true");
+    // });
+    Object.values(kids()).forEach((each) => {
+      each.classList.add(styles.draggable);
+    });
+    // console.log(sortableindex());
+
+    let sortable = new Sortable(sortableRef, {
+      animation: 300,
+      easing: "cubic-bezier(1, 0, 0, 1)",
+      direction: "horizontal",
+      ghostClass: styles.draggableGhost, // Class name for the drop placeholder
+      chosenClass: styles.draggableChosen, // Class name for the chosen item
+      dragClass: styles.draggableDragging, //classname for thhe dragg item
+      onEnd: (evt) => {
+        // console.log(evt.to);
+        setMaster(sortableRef.innerText);
+      },
+    });
+
+    return full;
   }
 }

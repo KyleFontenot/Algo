@@ -77,22 +77,95 @@
     // text-fill-color: transparent;
   }
 }
-.scrolltimeline {
-  position: absolute;
-  top: clamp(22rem, 100vh, 72rem);
-  right: 3%;
-  height: 100%;
-  width: 4px;
-  outline: 2px solid yellow;
+.draggableDivs {
+  display: inline-block;
+  // width: 100%;
+  // padding: 1.5rem 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin: 8px;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  line-height: 6rem;
+  min-height: 6rem;
+  vertical-align: middle;
+  background-color: white;
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 4px 5px -1px #444444;
+  transform: all 0.3s;
+  opacity: 1;
 }
-.timelineline {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 5vh;
-  right: 0;
-  width: 4px;
-  height: 1rem;
-  background-color: blue;
-  outline: 2px solid purple;
-  overflow: visible;
+.draggablehidden {
+  display: none;
+}
+
+//  Form section
+
+.inputDiv {
+  box-shadow: 0 4px 10px -2px #33333388;
+  border-radius: 20px;
+  padding: 4% 6% 6%;
+  margin-bottom: 2rem;
+  margin-inline: auto;
+  width: clamp(40%, 90%, 45rem);
+  position: relative;
+  display: block;
+  z-index: 40;
+  background-color: white;
+  & label {
+    font-size: 1.4rem;
+    display: block;
+  }
+  & input[type="text"] {
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    padding: 12px 10px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 16px;
+    border: none;
+    outline: 2px solid #33333338;
+    width: 60%;
+    // background: linear-gradient(-20deg, #eee, #fff 70%);
+    background-color: #fff;
+    color: #444;
+    transition: width 0.4s, outline 0.4s;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 5px 5px -1px green;
+      outline: 5px solid purple;
+    }
+    &:focus,
+    &:focus-visible {
+      outline: 2px solid var(--color-secondary);
+    }
+  }
+}
+
+.example {
+  font-style: italic;
+  color: #888;
+  display: inline-block;
+  margin-bottom: 30px;
+  text-indent: 1rem;
+  font-size: 1.1rem;
+}
+.contextinfo {
+  z-index: 9;
+  position: relative;
+  margin-inline: auto;
+  width: clamp(35%, 80%, 40rem);
+  top: -3rem;
+  border-radius: 20px;
+  background-color: #ffca9166;
+  color: #444;
+  display: block;
+  padding: calc(2% + 1rem) 7% 2%;
+  font-weight: 500;
 }

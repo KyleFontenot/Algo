@@ -48,9 +48,11 @@ const Home = (props) => {
       </div>
 
       <div className={styles.inputDiv}>
-        <label for="userSpecialChar">Choose special characters.</label>
+        <label for="userSpecialChar">Choose 1 - 3 special characters.</label>
         <br />
-        <span className={styles.example}>Example: "boisterous"</span>
+        <span className={styles.example}>
+          Example: "&nbsp; & &nbsp;&nbsp;, &nbsp;"
+        </span>
         <br />
         <input
           type="text"
@@ -58,6 +60,7 @@ const Home = (props) => {
           name="userSpecialChar"
           maxLength="6"
           minLength="2"
+          style="letter-spacing: 4px;"
           ref={specialRef}
           onInput={() => {
             setUserSpecial(specialRef.value);
@@ -92,6 +95,7 @@ const Home = (props) => {
           name="userphrase"
           maxLength="7"
           minLength="2"
+          style="letter-spacing: 4px;"
           ref={wordRef}
           onInput={() => {
             setUserWord(wordRef.value);

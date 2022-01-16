@@ -1,0 +1,24 @@
+.draggable {
+  cursor: grab;
+}
+.draggableGhost {
+  //
+  // outline: 2px solid #334455aa;
+  // opacity: 0.2;
+  outline: none;
+  border: 2px solid transparent;
+  box-shadow: 0 0px 8px -1px #999999;
+  background-color: #99999948;
+  color: transparent;
+  cursor: grab;
+}
+.draggableChosen {
+  overflow: visible;
+}
+.draggableDragging {
+  // background-color: green;
+  border: 2px solid var(--color-secondary);
+  border-radius: 20px;
+  cursor: grab;
+  margin: 1px;
+}
