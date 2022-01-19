@@ -16,30 +16,44 @@ import TopRightSVG from "./images/topright-shapes.svg";
 const toggleCase = (letter) => {
   let old = letter;
   letter.toUppercase() === old ? letter.toLowercase() : letter.toUppercase();
-  // if (letter.toUppercase() === old) {
-  //   return letter.toLowercase();
-  // } else {
-  //   return letter.toUppercase();
-  // }
 };
 
 const App = () => {
-  const [something, setSomething] = createSignal("");
-  const [master, setMaster] = usePassStore();
-  createEffect(() => {
-    console.log(master());
-    // setSomething(master);
-  });
-  onMount(() => {});
+  const [amazonTemplate, setAmazonTemplate] = createSignal(true);
+  const [googleTemplate, setGoogleTemplate] = createSignal(false);
+  const [facebookTemplate, setFacebookTemplate] = createSignal(false);
+
+  const [master, setMaster, refreshMaster] = usePassStore();
+
+  // createEffect(() => {
+  //   if (amazonTemplate) {
+  //     setGoogleTemplate(false);
+  //     setFacebookTemplate(false);
+  //   } else if (googleTemplate) {
+  //     setAmazonTemplate(false);
+  //     setFacebookTemplate(false);
+  //   } else if (facebookTemplate) {
+  //     setGoogleTemplate(false);
+  //     setAmazonTemplate(false);
+  //   }
+  // });
+  function turnButtonsOff() {
+    setAmazonTemplate(false);
+    setGoogleTemplate(false);
+    setFacebookTemplate(false);
+  }
+
   let numberRef;
   let wordRef;
   let specialRef;
+  let dndRef;
   const [userNumber, setUserNumber] = createSignal("");
   const [userWord, setUserWord] = createSignal("");
   const [userSpecial, setUserSpecial] = createSignal("");
 
   const [wildChar1, setWildChar1] = createSignal("A");
   const [wildChar2, setWildChar2] = createSignal("m");
+
   return (
     <main>
       <section className={styles.landingspace}>
@@ -68,7 +82,7 @@ const App = () => {
         />
       </section>
 
-      <section
+      <div
         className={styles.letsgetstarted}
         style="vertical-align: middle;text-align:center;"
       >
@@ -186,46 +200,151 @@ const App = () => {
           </div>
         </form>
 
+        <div className={styles.info}>
+          <p>
+            The most important part (the entire point really) of an algorithmic
+            password is that&nbsp;
+            <strong>
+              it changes based on what website/service you're using.
+            </strong>
+            <br />
+            <br />
+            The characters in green below correspond to the characters that
+            change with the website you'd be accessing.
+          </p>
+          <p>{dndRef}</p>
+          <button
+            classList={{
+              [styles.templatetester]: true,
+              [styles.selectedtemplate]: amazonTemplate() === true,
+            }}
+            onClick={() => {
+              setWildChar1("A");
+              setWildChar2("m");
+              turnButtonsOff();
+              setAmazonTemplate(true);
+              setMaster(dndRef.innerText);
+            }}
+          >
+            Amazon
+          </button>
+          <button
+            classList={{
+              [styles.templatetester]: true,
+              [styles.selectedtemplate]: googleTemplate() === true,
+            }}
+            onClick={() => {
+              setWildChar1("G");
+              setWildChar2("o");
+              turnButtonsOff();
+              setGoogleTemplate(true);
+              setMaster(dndRef.innerText);
+            }}
+          >
+            Google
+          </button>
+          <button
+            classList={{
+              [styles.templatetester]: true,
+              [styles.selectedtemplate]: facebookTemplate() === true,
+            }}
+            onClick={() => {
+              setWildChar1("F");
+              setWildChar2("a");
+              turnButtonsOff();
+              setFacebookTemplate(true);
+              setMaster(dndRef.innerText);
+            }}
+          >
+            Facebook
+          </button>
+        </div>
         {/* For making this into a repeatable component, this might be an option to automatically format children */}
         {/*<Test>{(x)=><div {...x} />}</Test>
          and then instead of doing dynamic just do
          <>{props.children({style:{}})}</>*/}
 
-        <DnD
-          style="margin: 2rem; outline:1px solid black; width: 90%;margin: 2rem auto 4rem; padding: 3% 6%;"
-          ref={dndref}
-        >
-          <div
-            classList={{
-              [styles.draggableDivs]: true,
-              [styles.draggablehidden]: userNumber() === "",
-            }}
-          >
-            {userNumber}
-          </div>
-          <div
-            classList={{
-              [styles.draggableDivs]: true,
-              [styles.draggablehidden]: userSpecial() === "",
-            }}
-          >
-            {userSpecial}
-          </div>
-          <div
-            classList={{
-              [styles.draggableDivs]: true,
-              [styles.draggablehidden]: userWord() === "",
-            }}
-          >
-            {userWord}
-          </div>
-          <div className={styles.draggableDivs}>{wildChar1}</div>
-          <div className={styles.draggableDivs}>{wildChar2}</div>
-        </DnD>
-        <div style="width: 100%; text-align: center; padding: 2rem 7% 10rem">
-          <h2 style="font-size: 3rem">{master()}</h2>
+        <div ref={dndRef}>
+          <DnD className={styles.dndcontainer}>
+            {userNumber()
+              .split("")
+              .map((each) => {
+                return (
+                  <div
+                    classList={{
+                      [styles.draggableDivs]: true,
+                      [styles.draggablehidden]: userNumber() === "",
+                    }}
+                  >
+                    {each}
+                  </div>
+                );
+              })}
+
+            {userSpecial()
+              .split("")
+              .map((each) => {
+                return (
+                  <div
+                    classList={{
+                      [styles.draggableDivs]: true,
+                      [styles.draggablehidden]: userSpecial() === "",
+                    }}
+                  >
+                    {each}
+                  </div>
+                );
+              })}
+
+            <div
+              classList={{
+                [styles.draggableDivs]: true,
+                [styles.draggablehidden]: userWord() === "",
+              }}
+            >
+              {userWord}
+            </div>
+            <div
+              classList={{
+                [styles.draggableDivs]: true,
+                [styles.wildcard]: true,
+              }}
+            >
+              {wildChar1}
+            </div>
+            <div
+              classList={{
+                [styles.draggableDivs]: true,
+                [styles.wildcard]: true,
+              }}
+            >
+              {wildChar2}
+            </div>
+          </DnD>
         </div>
-      </section>
+        <div
+          style="width: 100%; text-align: center; padding: 2rem 7% 10rem"
+          onClick={() => {
+            console.log(dndRef);
+          }}
+        >
+          <p>
+            Your password for{" "}
+            {amazonTemplate()
+              ? "Amazon "
+              : googleTemplate()
+              ? "Google "
+              : facebookTemplate()
+              ? "Facebook "
+              : null}
+            would be:
+          </p>
+          <h2 style="font-size: 3rem">{master().replaceAll("\n", "")}</h2>
+          <p style="margin-top:4rem; color: #999; font-size: 1.2rem">
+            Write it down!
+          </p>
+        </div>
+      </div>
     </main>
   );
 };

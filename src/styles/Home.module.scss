@@ -81,9 +81,10 @@
   display: inline-block;
   // width: 100%;
   // padding: 1.5rem 3rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  margin: 8px;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
   font-size: 1.5rem;
   border-radius: 20px;
   line-height: 6rem;
@@ -93,10 +94,24 @@
   border: 2px solid var(--color-secondary);
   box-shadow: 0 4px 5px -1px #444444;
   transform: all 0.3s;
+  cursor: grab;
   opacity: 1;
+  flex-grow: 3;
+  flex-shrink: 1;
 }
 .draggablehidden {
   display: none;
+}
+.wildcard {
+  background-color: #ebfdeb;
+}
+
+.info {
+  padding: 4% 8%;
+  & p {
+    font-size: 1.5rem;
+    line-height: 2.7rem;
+  }
 }
 
 //  Form section
@@ -168,4 +183,38 @@
   display: block;
   padding: calc(2% + 1rem) 7% 2%;
   font-weight: 500;
+  & p {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.templatetester {
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border-radius: 100vw;
+  border: 2px solid var(--color-primary);
+  margin: 1.7rem 1.8rem 1.2rem;
+  font-size: 1.2rem;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.selectedtemplate {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.dndcontainer {
+  margin: 2rem;
+  width: 90%;
+  outline: 2px solid purple;
+  margin: 2rem auto 4rem;
+  padding: 3% 3%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  & div {
+    flex-grow: 3;
+  }
 }

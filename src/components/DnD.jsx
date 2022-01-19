@@ -5,13 +5,20 @@ import { usePassStore } from "./ContextProvider";
 import Sortable from "sortablejs";
 import styles from "./DnD.module.scss";
 // export let sortableRef;
+
 export function DnD(props) {
   const kids = children(() => props.children);
+  // const [sortableDivText, setSortableText] = createSignal();
   let sortableRef;
-  const [master, setMaster] = usePassStore();
-  onMount(() => {
+  const [master, setMaster, refreshMaster] = usePassStore();
+  createEffect(() => {
+    // console.log(props.ref());
     setMaster(sortableRef.innerText);
   });
+
+  function signalRefresh() {
+    console.log("invoked function!");
+  }
 
   // At the moment requires multiple children
   if (props.children instanceof HTMLElement) {
@@ -23,7 +30,7 @@ export function DnD(props) {
     // }
     // console.log(master);
     const full = (
-      <div ref={sortableRef} style={props.style}>
+      <div ref={sortableRef} style={props.style} className={props.className}>
         <For each={kids()}>
           {(child) => {
             return child;
@@ -32,14 +39,9 @@ export function DnD(props) {
       </div>
     );
 
-    // console.log(sortableRef.innerText);
-    // Object.values(kids()).forEach((each) => {
-    //   each.setAttribute("draggable", "true");
-    // });
     Object.values(kids()).forEach((each) => {
       each.classList.add(styles.draggable);
     });
-    // console.log(sortableindex());
 
     let sortable = new Sortable(sortableRef, {
       animation: 300,
@@ -50,6 +52,7 @@ export function DnD(props) {
       dragClass: styles.draggableDragging, //classname for thhe dragg item
       onEnd: (evt) => {
         // console.log(evt.to);
+        // refreshMaster(sortableRef.innerText);
         setMaster(sortableRef.innerText);
       },
     });
