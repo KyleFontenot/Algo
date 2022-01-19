@@ -1,5 +1,7 @@
 <h1>Passworder</h1>
-https://algopassword.com/
+https://algopassword.com/ 
+<br/>
+<br/>
 
 ![SolidJS](https://img.shields.io/badge/-SolidJS-blue?style=for-the-badge)
 ![Netlify](https://img.shields.io/badge/-Netlify-%2300C7B7?style=for-the-badge)
