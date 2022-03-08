@@ -1,0 +1,17 @@
+.contextinfo {
+	z-index: 9;
+	position: relative;
+	margin-inline: auto;
+	width: clamp(35%, 80%, 40rem);
+	top: -3rem;
+	border-radius: 20px;
+	background-color: #ffca9166;
+	color: #444;
+	display: block;
+	padding: calc(2% + 1rem) 7% 2%;
+	font-weight: 500;
+	& p {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+}
