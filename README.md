@@ -12,13 +12,13 @@ Passworder is a small web-app for users to create strong, algorithmic passwords.
 
 ## Under The Hood
 
-A single-page layout that uses SolidJS primitives such as Context, refs, signals, and effects. All designs and stylings were hand-made.
+A single-page layout that uses SolidJS primitives such as Context, refs, signals, and effects. All designs and stylings were hand-made. Mobile friendly 👍
 
 ## Looking Forward
 - [ ] Make a logo mainly for the favicon
 - [ ] input restrictions on each input field
 - [ ] add in more context for the certain limitations on the password components.
-- [ ] maybe a table for showing how the password changes for each website. 
+- [x] maybe a table for showing how the password changes for each website. 
 - [ ] localStorage?
 - [ ] create Footer and some basic information
 - [ ] give options to email or download the finalized password
